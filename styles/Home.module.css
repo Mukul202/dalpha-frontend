@@ -1,5 +1,31 @@
+.body{
+  background-color: #F5F6FA;
+    height: 100vh;
+    width: 100vw;
+}
+
 .container {
-  padding: 0 2rem;
+        position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input{
+    padding: 10px 35px;
+    border-radius: 50px;
+    border: none;
+    font-size: 17px;
+    width: 600px;
+    height: 45px;
+}
+
+.input:active{
+  border: 0.5px solid rgb(190, 190, 190) ;
 }
 
 .main {
@@ -66,15 +92,17 @@
 }
 
 .grid {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    /* max-width: 400px; */
+    margin: auto;
+    margin-top: 60px;
 }
 
 .card {
-  margin: 1rem;
+  margin: 0.5rem;
   padding: 1.5rem;
   text-align: left;
   color: inherit;
@@ -82,7 +110,12 @@
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  max-width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  cursor: pointer;
 }
 
 .card:hover,
@@ -99,13 +132,29 @@
 
 .card p {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: 1.5;
 }
 
 .logo {
   height: 1em;
   margin-left: 0.5rem;
+}
+
+.heading{
+  font-size: 50px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-weight: 800;
+  text-transform: capitalize;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.companyImage{
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 600px) {
