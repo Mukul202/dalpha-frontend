@@ -1,6 +1,6 @@
 .body{
   background-color: #F5F6FA;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
 }
 
@@ -15,13 +15,31 @@
     justify-content: space-between;
 }
 
+.logoMain{
+  margin-bottom: 50px;
+  height: 100px;
+}
+
+.searchLogo{
+  position: relative;
+  height: 20px;
+  left: 36px;
+}
+
+.form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .input{
-    padding: 10px 35px;
+    padding: 20px 50px;
     border-radius: 50px;
     border: none;
     font-size: 17px;
     width: 600px;
     height: 45px;
+    margin: auto;
 }
 
 .input:active{
@@ -161,5 +179,29 @@
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+}
+@media (max-width: 1240px) {
+  .searchLogo{
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  .container{
+    width: 100%;
+  }
+  .input{
+    width: 100% !important;
+  }
+  .card{
+    max-width: 200px;
+    padding: 10px;
+  }
+  .grid{
+    width: 100%;
+    flex-direction: row;
+  }
+  .logoMain{
+    height: 70px;
   }
 }

@@ -2,13 +2,14 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import MiniCard from '/components/miniCard'
+import SearchInput from '/components/Search'
 
 export default function Home() {
   return (
     <div className={styles.body}>
         <div className={styles.container}>
-            <h1 className={styles.heading}>Digital Alpha</h1>
-            <input type="text" className={styles.input} placeholder='Search Company Name'></input>
+          <img src="/logo.png" className={styles.logoMain} />
+            <SearchInput/>
             <div className={styles.grid}>
                 <MiniCard link="/"/>
                 <MiniCard link="/"/>
