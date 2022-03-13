@@ -1,6 +1,6 @@
-import Chart from '../components/Chart'
-import Title from '/components/Title'
-import Orders from '/components/Orders'
+import Chart from '../../components/Chart'
+import Title from '../../components/Title'
+import Orders from '../../components/Orders'
 
 export default function Home() {
   return (

@@ -9,64 +9,82 @@ import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import InfoIcon from '@mui/icons-material/Info';
+import AddChartIcon from '@mui/icons-material/Addchart';
 
-export const mainListItems = (
-  <React.Fragment>
-    <ListItemButton>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Orders" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Customers" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
-    </ListItemButton>
-  </React.Fragment>
-);
+import Link from 'next/link';
 
-export const secondaryListItems = (
-  <React.Fragment>
-    <ListSubheader component="div" inset>
-      Saved reports
-    </ListSubheader>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItemButton>
-  </React.Fragment>
-);
+
+
+export function MainListItems(props) {
+    const { cpid, activeMenu } = props;
+    const activeStyle = {
+        backgroundColor: "#c1c8d9"
+    };
+    return (
+        <React.Fragment>
+            <Link href={`/${cpid}/company_info`}>
+            <ListItemButton style={activeMenu == "company_info" ? activeStyle : {}}>
+            <ListItemIcon>
+                <InfoIcon />
+            </ListItemIcon>
+            <ListItemText primary="Company Info" />
+            </ListItemButton></Link>
+            
+            <Link href={`/${cpid}/company_metrics`}>
+            <ListItemButton style={activeMenu == "company_metrics" ? activeStyle : {}}>
+            <ListItemIcon>
+                <AddChartIcon />
+            </ListItemIcon>
+            <ListItemText primary="Company Metrics" />
+            </ListItemButton></Link>
+
+            <Link href={`/${cpid}/company_finances`}>
+            <ListItemButton style={activeMenu == "company_finances" ? activeStyle : {}}>
+            <ListItemIcon>
+                <AttachMoneyIcon />
+            </ListItemIcon>
+            <ListItemText primary="Finances" />
+            </ListItemButton></Link>
+
+            <Link href={`/${cpid}/company_accounts`}>
+            <ListItemButton style={activeMenu == "company_accounts" ? activeStyle : {}}>
+            <ListItemIcon>
+                <BarChartIcon />
+            </ListItemIcon>
+            <ListItemText primary="Accounts" />
+            </ListItemButton></Link>
+            
+        </React.Fragment>
+    );
+}
+
+export function SecondaryListItems(props) {
+    const { cpid } = props;
+    return (
+        <React.Fragment>
+            <ListSubheader component="div" inset>
+            Saved reports
+            </ListSubheader>
+            <ListItemButton>
+            <ListItemIcon>
+                <AssignmentIcon />
+            </ListItemIcon>
+            <ListItemText primary="Current month" />
+            </ListItemButton>
+            <ListItemButton>
+            <ListItemIcon>
+                <AssignmentIcon />
+            </ListItemIcon>
+            <ListItemText primary="Last quarter" />
+            </ListItemButton>
+            <ListItemButton>
+            <ListItemIcon>
+                <AssignmentIcon />
+            </ListItemIcon>
+            <ListItemText primary="Year-end sale" />
+            </ListItemButton>
+        </React.Fragment>
+    );
+}
