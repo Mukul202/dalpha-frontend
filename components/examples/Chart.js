@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useTheme } from '@mui/material/styles';
-import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer, Tooltip, CartesianGrid} from 'recharts';
 import Title from './Title';
 
 // Generate Sales Data
@@ -8,7 +8,7 @@ function createData(time, amount) {
   return { time, amount };
 }
 
-const data = [
+const data1 = [
   createData('00:00', 0),
   createData('03:00', 300),
   createData('06:00', 600),
@@ -20,6 +20,66 @@ const data = [
   createData('24:00', undefined),
 ];
 
+// const data2 = require("../../data/testData.json")
+// console.log(data2)
+
+let data3 = [
+  {
+                "from": {
+                    "$date": {
+                        "$numberLong": "1585699200000"
+                    }
+                },
+                "to": {
+                    "$date": {
+                        "$numberLong": "1617148800000"
+                    }
+                },
+                "value": {
+                    "$numberDouble": "-452000"
+                }
+            }, {
+                "from": {
+                    "$date": {
+                        "$numberLong": "1554076800000"
+                    }
+                },
+                "to": {
+                    "$date": {
+                        "$numberLong": "1585612800000"
+                    }
+                },
+                "value": {
+                    "$numberDouble": "0"
+                }
+            }, {
+                "from": {
+                    "$date": {
+                        "$numberLong": "1522540800000"
+                    }
+                },
+                "to": {
+                    "$date": {
+                        "$numberLong": "1553990400000"
+                    }
+                },
+                "value": {
+                    "$numberDouble": "-431000"
+                }
+            }
+]
+
+data3 = data3.map(element => {
+  // element.from = new Date(element.from.$date.$numberLong).toString()
+  element.to = new Date(element.to.$date.$numberLong).toString()
+  // (new Date(n)).toString()
+  element.value = element.value.$numberDouble
+  return createData(element.to, element.value)
+});
+
+console.log(data3)
+
+
 export default function Chart() {
   const theme = useTheme();
 
@@ -28,7 +88,7 @@ export default function Chart() {
       <Title>Today</Title>
       <ResponsiveContainer>
         <LineChart
-          data={data}
+          data={data1}
           margin={{
             top: 16,
             right: 16,
@@ -36,6 +96,7 @@ export default function Chart() {
             left: 24,
           }}
         >
+          <CartesianGrid strokeDasharray="3 3" />
           <XAxis
             dataKey="time"
             stroke={theme.palette.text.secondary}
@@ -57,12 +118,13 @@ export default function Chart() {
               Sales ($)
             </Label>
           </YAxis>
+          <Tooltip cursor={{ strokeDasharray: '3 3' }} />
           <Line
             isAnimationActive={false}
             type="monotone"
             dataKey="amount"
             stroke={theme.palette.primary.main}
-            dot={false}
+            // dot={true}
           />
         </LineChart>
       </ResponsiveContainer>

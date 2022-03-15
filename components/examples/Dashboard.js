@@ -21,6 +21,7 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import SearchIcon from '@mui/icons-material/Search';
 
 function Copyright(props) {
   return (
@@ -120,11 +121,7 @@ function DashboardContent() {
             >
               Dashboard
             </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
+            <SearchIcon/>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -150,10 +147,7 @@ function DashboardContent() {
         <Box
           component="main"
           sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
+            backgroundColor: '#F5F6FA',
             flexGrow: 1,
             height: '100vh',
             overflow: 'auto',

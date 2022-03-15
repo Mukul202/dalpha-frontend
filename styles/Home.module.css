@@ -1,11 +1,11 @@
 .body{
-  background-color: #F5F6FA;
+    background-color: #F5F6FA;
     height: 100%;
-    width: 100vw;
+    width: 100%;
 }
 
 .container {
-        position: fixed;
+    position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -17,7 +17,7 @@
 
 .logoMain{
   margin-bottom: 50px;
-  height: 100px;
+  height: 70px;
 }
 
 .searchLogo{
@@ -120,6 +120,7 @@
 }
 
 .card {
+  background-color: white;
   margin: 0.5rem;
   padding: 1.5rem;
   text-align: left;
