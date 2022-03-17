@@ -13,18 +13,18 @@ function createData(time, amount) {
   return { time, amount };
 }
 
-export default function Chart() {
+export default function Chart({importIng}) {
   const theme = useTheme();
-  let data2 = require('../../data/testData.json');
-  if (data2[0].qat.length > 1) {
-    let years = data2.map(data => {
-      return data.year
+  let data = importIng
+  if (data[0].quat.length > 1) {
+    let years = data.map(element => {
+      return element.year
     });
     const maping = (value) => {
-      let internalData = data2.filter(data => data.year === value)[0].qat
+      let internalData = data.filter(element => element.year === value)[0].quat
       let data =[]
       for (let index = 0; index < internalData.length; index++) {
-        if (internalData[index].qat === false) { 
+        if (internalData[index].quat === false) { 
           data[index] = createData(`Qtr-${index+1}`, undefined)
         } else {
           data[index] = createData(`Qtr-${index+1}`, internalData[index])
@@ -33,7 +33,7 @@ export default function Chart() {
       return data
     }
     const [year, setyear] = React.useState('');
-    const [data, setdata] = React.useState(maping(data2[0].year));
+    const [data, setdata] = React.useState(maping(data[0].year));
     const handleChange = (event) => {
       let value = event.target.value;
       setdata(maping(value));
@@ -106,12 +106,11 @@ export default function Chart() {
     </React.Fragment>
     )
   } else {
-    let data = data2.map(data => { 
-      return data.qat[0]
-    })
+    let data = data.map(data => { 
+      return [data.year, data.quat[0] ]})
     const maping = () => {
       for (let index = 0; index < data.length; index++) {
-        data[index] = createData(index+1, data[index])
+        data[index] = createData(data[index][0], data[index][1])
       }
       return data
     }
@@ -162,5 +161,16 @@ export default function Chart() {
         </ResponsiveContainer>
     </React.Fragment>
     )
+  }
+}
+
+export async function getStaticProps() {
+  const res = await fetch('http://localhost:8080/api/v1/returnonequity?id=1459417');
+  const data = await res.json();
+  console.log(data)
+  return {
+    props: {
+      importIng : data
+    }
   }
 }
