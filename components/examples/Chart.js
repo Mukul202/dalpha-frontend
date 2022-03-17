@@ -16,15 +16,19 @@ function createData(time, amount) {
 export default function Chart() {
   const theme = useTheme();
   let data2 = require('../../data/testData.json');
-  if (data2[0].qtr.length > 1) {
+  if (data2[0].qat.length > 1) {
     let years = data2.map(data => {
       return data.year
     });
     const maping = (value) => {
-      let internalData = data2.filter(data => data.year === value)[0].qtr
+      let internalData = data2.filter(data => data.year === value)[0].qat
       let data =[]
       for (let index = 0; index < internalData.length; index++) {
-        data[index] = createData(index+1, internalData[index])
+        if (internalData[index].qat === false) { 
+          data[index] = createData(`Qtr-${index+1}`, undefined)
+        } else {
+          data[index] = createData(`Qtr-${index+1}`, internalData[index])
+        }
       }
       return data
     }
@@ -52,7 +56,7 @@ export default function Chart() {
             onChange={handleChange}
             >
               {years.map(year => { 
-                return <MenuItem value={year}>{year}</MenuItem>
+                return <MenuItem key={year} value={year}>{year}</MenuItem>
               })}
           </Select>
         </FormControl>
@@ -103,7 +107,7 @@ export default function Chart() {
     )
   } else {
     let data = data2.map(data => { 
-      return data.qtr[0]
+      return data.qat[0]
     })
     const maping = () => {
       for (let index = 0; index < data.length; index++) {
