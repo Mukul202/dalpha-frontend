@@ -12,8 +12,8 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import InfoIcon from '@mui/icons-material/Info';
 import AddChartIcon from '@mui/icons-material/Addchart';
-
 import Link from 'next/link';
+import styles from '../styles/Home.module.css';
 
 
 
@@ -55,36 +55,26 @@ export function MainListItems(props) {
             </ListItemIcon>
             <ListItemText primary="Accounts" />
             </ListItemButton></Link>
-            
         </React.Fragment>
     );
 }
 
 export function SecondaryListItems(props) {
-    const { cpid } = props;
+    const { link } = props
+    console.log(link)
     return (
         <React.Fragment>
             <ListSubheader component="div" inset>
-            Saved reports
+            Reports
             </ListSubheader>
+            <a href={ link } target= "_blank" className={styles.link}>
             <ListItemButton>
             <ListItemIcon>
                 <AssignmentIcon />
             </ListItemIcon>
-            <ListItemText primary="Current month" />
+            <ListItemText primary="DataSet" />
             </ListItemButton>
-            <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Last quarter" />
-            </ListItemButton>
-            <ListItemButton>
-            <ListItemIcon>
-                <AssignmentIcon />
-            </ListItemIcon>
-            <ListItemText primary="Year-end sale" />
-            </ListItemButton>
+            </a>
         </React.Fragment>
     );
 }

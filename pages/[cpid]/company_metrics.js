@@ -26,13 +26,12 @@ export async function getServerSideProps(context) {
     const data = await response.json();
     attributesData[attrib] = data;
   }
-  // console.log(attributesData);
 
   return {
     props: {
       cpid: cpid,
       cpname: cpname,
-      attributesData: attributesData
+      attributesData: attributesData,
     }
   };
 }
