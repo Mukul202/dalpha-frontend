@@ -13,27 +13,29 @@ function createData(time, amount) {
   return { time, amount };
 }
 
-export default function Chart({importIng}) {
+export default function Chart() {
   const theme = useTheme();
-  let data = importIng
-  if (data[0].quat.length > 1) {
-    let years = data.map(element => {
+  // console.log(props)
+  // let data = props.dataPoints
+  const dataIn = require('../../data/testData.json')
+  if (dataIn[0].quat.length > 1) {
+    let years = dataIn.map(element => {
       return element.year
     });
     const maping = (value) => {
-      let internalData = data.filter(element => element.year === value)[0].quat
-      let data =[]
+      let internalData = dataIn.filter(element => element.year === value)[0].quat
+      let getData =[]
       for (let index = 0; index < internalData.length; index++) {
         if (internalData[index].quat === false) { 
-          data[index] = createData(`Qtr-${index+1}`, undefined)
+          getData[index] = createData(`Qtr-${index+1}`, undefined)
         } else {
-          data[index] = createData(`Qtr-${index+1}`, internalData[index])
+          getData[index] = createData(`Qtr-${index+1}`, internalData[index])
         }
       }
-      return data
+      return getData
     }
     const [year, setyear] = React.useState('');
-    const [data, setdata] = React.useState(maping(data[0].year));
+    const [data, setdata] = React.useState(maping(dataIn[0].year));
     const handleChange = (event) => {
       let value = event.target.value;
       setdata(maping(value));
@@ -106,7 +108,7 @@ export default function Chart({importIng}) {
     </React.Fragment>
     )
   } else {
-    let data = data.map(data => { 
+    let data = dataIn.map(data => { 
       return [data.year, data.quat[0] ]})
     const maping = () => {
       for (let index = 0; index < data.length; index++) {
@@ -165,12 +167,11 @@ export default function Chart({importIng}) {
 }
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:8080/api/v1/returnonequity?id=1459417');
+  const res = await fetch('https://dalpha-server.herokuapp.com/api/v1/liabilities?id=1084048');
   const data = await res.json();
-  console.log(data)
   return {
     props: {
-      importIng : data
+      dataPoints:data
     }
   }
 }

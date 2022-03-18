@@ -2,7 +2,6 @@ import * as React from 'react';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import AnnouncementIcon from '@mui/icons-material/Announcement';
 import PeopleIcon from '@mui/icons-material/People';
@@ -57,9 +56,6 @@ const link = 'http://localhost:8080/api/v1/returnonequity?id=1459417';
 export default function secondaryListItems() { 
   return (
     <React.Fragment>
-    <ListSubheader component="div" inset>
-      Save report
-    </ListSubheader>
     <a href={link} target="_blank" className={styles.link}>
     <ListItemButton>
       <ListItemIcon>

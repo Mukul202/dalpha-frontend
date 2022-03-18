@@ -181,6 +181,46 @@
   margin-bottom: 10px;
 }
 
+.metrics_name{
+    padding: 24px;
+    font-size: 20px;
+    text-align: center;
+    font-style: oblique;
+    text-transform: capitalize;
+    padding-bottom: 10px;
+}
+
+.metrics_value{
+    padding: 10px;
+    font-size: 17px;
+    text-align: center;
+    background-color: #eaeaea;
+}
+
+.metrics_card{
+  cursor: pointer;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.model_box{
+  height: 500px;
+  width: 70%;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 3px;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;

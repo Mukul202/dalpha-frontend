@@ -5,14 +5,10 @@ import MetricsComponent from '../../components/metrics/MetricsComponent'
 export default function Company_Metrics(props) {
   const router = useRouter();
   const q_cpid = router.query.cpid;
-  const {cpid, cpname, attributesData} = props;
-
-  console.log(cpid, cpname);
-  console.log(attributesData);
-
+  const { cpid, cpname, attributesData } = props;
   return (
     <Dashboard cpid={cpid} activeMenu={"company_metrics"} attributesData={attributesData}>
-      <MetricsComponent />
+      <MetricsComponent attributesData={attributesData} />
     </Dashboard>
   );
 }
