@@ -21,7 +21,8 @@ export async function getServerSideProps(context) {
   const attributes = ['returnonequity', 'netinventory', 'liabilities', 'financialleverage', 'operatingincome', 'nonoperatingincomeexpense', 'depreciation', 'incometaxesextraordinaryitemsnoncontrollinginterest', 'netincomeloss'];
   let attributesData = {};
   for(let attrib of attributes) {
-    const response = await fetch(`https://dalpha-server.herokuapp.com/api/v1/${attrib}?id=${cpid}`);
+    // const response = await fetch(`https://dalpha-server.herokuapp.com/api/v1/${attrib}?id=${cpid}`);
+    const response = await fetch(`http://dalpha-server-ism.herokuapp.com/api/v1/${attrib}?id=${cpid}`);
     const data = await response.json();
     attributesData[attrib] = data;
   }

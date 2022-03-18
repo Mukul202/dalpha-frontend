@@ -18,13 +18,129 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
+import Accordion from '@mui/material/Accordion';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+
+function date_formater(s) {
+    let d = new Date(s);
+    return `${d.getDay() + 1}-${d.getMonth() + 1}-${d.getFullYear()}`;
+}
+
+function process_word(s) {
+    let ans = "";
+    for(let i=0; i<s.length; i++) {
+        if(s[i].toUpperCase() === s[i]) ans = ans + ' ';
+        ans = ans + s[i];
+    }
+    return ans;
+}
+
+function NestDisplay({nest}) {
+    console.log(nest);
+    const ad = [];
+    for(let item in nest) ad.push(
+        // <Grid container spacing={3}>
+        //     <Grid item xs={12} md={8}>
+        //         <b>{item} </b>
+        //     </Grid>
+        //     <Grid item xs={12} md={4}>
+        //         {nest[item]}
+        //     </Grid>
+        // </Grid>
+        <TableRow>
+            <TableCell align="left">
+                <Typography variant="h6" component="h6">{item}</Typography>
+            </TableCell>
+            <TableCell align="right">
+                {nest[item]}
+            </TableCell>
+        </TableRow>
+    );
+    return (
+        <div>{ad}</div>
+    );
+}
+
+function FinancialHead({financeData}) {
+    const [expanded, setExpanded] = React.useState(false);
+
+    const handleChange = (panel) => (event, isExpanded) => {
+      setExpanded(isExpanded ? panel : false);
+    };
+
+
+    let financeArr = [];
+    for(let item in financeData) {
+        financeArr.push({
+            itemName: item,
+            itemValue: financeData[item]
+        });
+    }
+
+    console.log(financeData);
+    console.log(financeArr);
+    const acc = financeArr.map((item, i) => (
+
+        // <li key={i}>
+            <Accordion key={i} expanded={expanded === `panel${i}`} onChange={handleChange(`panel${i}`)}>
+                <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls={`panel${i}bh-content`}
+                    id={`panel${i}bh-header`}
+                >
+                    <Grid container spacing={2}>
+                        <Grid item md={12} lg={9}>
+                            <Typography>
+                                {process_word(item.itemName)}
+                            </Typography>
+                        </Grid>
+                        <Grid item md={12} lg={3}>
+                            <Typography sx={{ color: 'text.secondary' }}>
+                                <b>Date: </b>
+                                <span>
+                                    {
+                                        item.itemValue.date ? date_formater(item.itemValue.date) : date_formater(item.itemValue.to)
+                                    }
+                                </span>
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                </AccordionSummary>
+                <AccordionDetails>
+                    <TableContainer>
+                        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                            <TableBody>
+                                <NestDisplay nest={item.itemValue.value} />
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </AccordionDetails>
+            </Accordion>
+        // </li>
+    ));
+
+    return (
+        <div>
+            {acc}
+        </div>
+    );
+}
 
 export default function FinanceComponent({cpid, cpname, financeData}) {
+    console.log(financeData);
     return (
         <Grid container spacing={3}>
-            <Typography variant="h2">{cpname}</Typography>
-            <Grid item xs={12} lg={4}>
-                <h1>Finance Component</h1>
+            <Grid item xs={12} lg={12}>
+                <FinancialHead financeData={financeData} />
             </Grid>
         </Grid>
     );

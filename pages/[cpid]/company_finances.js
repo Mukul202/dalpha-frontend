@@ -24,12 +24,15 @@ export async function getServerSideProps(context) {
   console.log(cpid, cpname);
   
   let financeData = {};
+  const response = await fetch(`http://dalpha-server-ism.herokuapp.com/api/v1/financials?id=${cpid}`);
+  const data = await response.json();
+
 
   return {
     props: {
       cpid: cpid,
       cpname: cpname,
-      financeData: financeData
+      financeData: data
     }
   };
 }
