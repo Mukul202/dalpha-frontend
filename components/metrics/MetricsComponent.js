@@ -19,9 +19,10 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
 
-export default function MetricsComponent() {
+export default function MetricsComponent({cpid, cpname, attributesData}) {
     return (
         <Grid container spacing={3} style={{marginTop: "5px"}}>
+            <Typography variant="h2">{cpname}</Typography>
             <Grid item xs={12} md={6} lg={3}>
                 <Paper elevation={3} style={{textAlign: "center", padding: "30px 25px",}}>
                     <Typography variant="h4" component="h4">

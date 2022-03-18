@@ -28,7 +28,7 @@ export default function SearchInput() {
             if(data) {
                 let cpid = data.results[0].id;
                 let cpname = data.results[0].name;
-                router.push(`/${cpid}/company_metrics?cpname=${cpname}`);
+                router.push(`/${cpid}/company_info?cpname=${cpname}`);
             }
         }
     }

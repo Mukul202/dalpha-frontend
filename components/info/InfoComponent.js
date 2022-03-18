@@ -19,9 +19,10 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
 
-export default function InfoComponent() {
+export default function InfoComponent({cpid, cpname, infoData}) {
     return (
         <Grid container spacing={3}>
+            <Typography variant="h2">{cpname}</Typography>
             <Grid item xs={12} lg={4}>
                 <h1>Info Component</h1>
             </Grid>

@@ -11,8 +11,8 @@ export default function Company_Metrics(props) {
   console.log(attributesData);
 
   return (
-    <Dashboard cpid={cpid} activeMenu={"company_metrics"} attributesData={attributesData}>
-      <MetricsComponent />
+    <Dashboard cpid={cpid} cpname={cpname} activeMenu={"company_metrics"}>
+      <MetricsComponent cpid={cpid} cpname={cpname} attributesData={attributesData} />
     </Dashboard>
   );
 }
