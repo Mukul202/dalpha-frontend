@@ -15,3 +15,10 @@ export default function Home() {
     </div>
   )
 }
+
+export async function getStaticProps() {
+    // const res = await fetch('https://jsonplaceholder.typicode.com/users');
+    const res = await fetch('https://dalpha-server.herokuapp.com/api/v1/liabilities?id=1084048');
+    const data = await res.json();
+    console.log(data);
+}
