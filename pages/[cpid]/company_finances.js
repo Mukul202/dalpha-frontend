@@ -5,7 +5,7 @@ import FinanceComponent from '../../components/finance/FinanceComponent'
 export default function Company_Finance(props) {
   const router = useRouter();
   const q_cpid = router.query.cpid;
-  const {cpid, cpname, financeData} = props;
+  const {cpid, cpname, financeData,link} = props;
 
   console.log(cpid, cpname);
   console.log(financeData);
@@ -22,14 +22,13 @@ export async function getServerSideProps(context) {
   let cpid = params.cpid;
   let cpname = query.cpname;
   console.log(cpid, cpname);
-  
   let financeData = {};
 
   return {
     props: {
       cpid: cpid,
       cpname: cpname,
-      financeData: financeData
+      financeData: financeData,
     }
   };
 }
