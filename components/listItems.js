@@ -18,13 +18,13 @@ import Link from 'next/link';
 
 
 export function MainListItems(props) {
-    const { cpid, activeMenu } = props;
+    const { cpid, cpname, activeMenu } = props;
     const activeStyle = {
         backgroundColor: "#c1c8d9"
     };
     return (
         <React.Fragment>
-            <Link href={`/${cpid}/company_info`}>
+            <Link href={`/${cpid}/company_info?cpname=${cpname}`}>
             <ListItemButton style={activeMenu == "company_info" ? activeStyle : {}}>
             <ListItemIcon>
                 <InfoIcon />
@@ -32,7 +32,7 @@ export function MainListItems(props) {
             <ListItemText primary="Company Info" />
             </ListItemButton></Link>
             
-            <Link href={`/${cpid}/company_metrics`}>
+            <Link href={`/${cpid}/company_metrics?cpname=${cpname}`}>
             <ListItemButton style={activeMenu == "company_metrics" ? activeStyle : {}}>
             <ListItemIcon>
                 <AddChartIcon />
@@ -40,7 +40,7 @@ export function MainListItems(props) {
             <ListItemText primary="Company Metrics" />
             </ListItemButton></Link>
 
-            <Link href={`/${cpid}/company_finances`}>
+            <Link href={`/${cpid}/company_finances?cpname=${cpname}`}>
             <ListItemButton style={activeMenu == "company_finances" ? activeStyle : {}}>
             <ListItemIcon>
                 <AttachMoneyIcon />
@@ -48,7 +48,7 @@ export function MainListItems(props) {
             <ListItemText primary="Finances" />
             </ListItemButton></Link>
 
-            <Link href={`/${cpid}/company_accounts`}>
+            <Link href={`/${cpid}/company_accounts?cpname=${cpname}`}>
             <ListItemButton style={activeMenu == "company_accounts" ? activeStyle : {}}>
             <ListItemIcon>
                 <BarChartIcon />

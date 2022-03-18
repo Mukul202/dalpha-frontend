@@ -90,7 +90,7 @@ function DashboardContent(props) {
     setOpen(!open);
   };
 
-  const { cpid, activeMenu, content } = props;
+  const { cpid, cpname, activeMenu, content } = props;
   return (
     <ThemeProvider theme={mdTheme}>
       <Box sx={{ display: 'flex' }}>
@@ -144,7 +144,7 @@ function DashboardContent(props) {
           </Toolbar>
           <Divider />
           <List component="nav">
-            <MainListItems cpid={cpid} activeMenu={activeMenu} />
+            <MainListItems cpid={cpid} cpname={cpname} activeMenu={activeMenu} />
             <Divider sx={{ my: 1 }} />
             <SecondaryListItems cpid={cpid} activeMenu={activeMenu} />
           </List>
@@ -175,6 +175,6 @@ function DashboardContent(props) {
 }
 
 export default function Dashboard(props) {
-  const { cpid, activeMenu, children } = props;
-  return <DashboardContent cpid={cpid} activeMenu={activeMenu} content={children} />;
+  const { cpid, cpname, activeMenu, children } = props;
+  return <DashboardContent cpid={cpid} cpname={cpname} activeMenu={activeMenu} content={children} />;
 }

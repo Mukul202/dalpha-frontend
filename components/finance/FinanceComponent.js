@@ -19,9 +19,10 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 
 
-export default function FinanceComponent() {
+export default function FinanceComponent({cpid, cpname, financeData}) {
     return (
         <Grid container spacing={3}>
+            <Typography variant="h2">{cpname}</Typography>
             <Grid item xs={12} lg={4}>
                 <h1>Finance Component</h1>
             </Grid>

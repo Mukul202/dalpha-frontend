@@ -7,8 +7,8 @@ export default function Company_Metrics(props) {
   const q_cpid = router.query.cpid;
   const { cpid, cpname, attributesData } = props;
   return (
-    <Dashboard cpid={cpid} activeMenu={"company_metrics"} attributesData={attributesData}>
-      <MetricsComponent attributesData={attributesData} />
+    <Dashboard cpid={cpid} cpname={cpname} activeMenu={"company_metrics"}>
+      <MetricsComponent cpid={cpid} cpname={cpname} attributesData={attributesData} />
     </Dashboard>
   );
 }
