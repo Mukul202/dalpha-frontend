@@ -22,11 +22,11 @@ export async function getServerSideProps(context) {
   let attributesData = {};
   for(let attrib of attributes) {
     // const response = await fetch(`https://dalpha-server.herokuapp.com/api/v1/${attrib}?id=${cpid}`);
-    const response = await fetch(`https://dalpha-server-ism.herokuapp.com/api/v1/${attrib}?id=${cpid}`);
+    const response = await fetch(`https://dalpha-server-inter-iit.herokuapp.com/api/v1/${attrib}?id=${cpid}`);
     const data = await response.json();
     attributesData[attrib] = data;
   }
-  let dataurl = await fetch(`https://dalpha-server-ism.herokuapp.com/api/v1/download.csv?id=${cpid}`);
+  let dataurl = await fetch(`https://dalpha-server-inter-iit.herokuapp.com/api/v1/download.csv?id=${cpid}`);
 
   return {
     props: {
