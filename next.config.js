@@ -5,8 +5,8 @@ const nextConfig = {
     return {
       ...config,
       cache: false,
-    }
-  }
-}
+    };
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
