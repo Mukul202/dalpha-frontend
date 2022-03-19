@@ -45,7 +45,6 @@ function process_word(s) {
 }
 
 function NestDisplay({nest}) {
-    console.log(nest);
     const ad = [];
     for(let item in nest) ad.push(
         // <Grid container spacing={3}>
@@ -86,8 +85,6 @@ function FinancialHead({financeData}) {
         });
     }
 
-    console.log(financeData);
-    console.log(financeArr);
     const acc = financeArr.map((item, i) => (
 
         // <li key={i}>
@@ -136,7 +133,6 @@ function FinancialHead({financeData}) {
 }
 
 export default function FinanceComponent({cpid, cpname, financeData}) {
-    console.log(financeData);
     return (
         <Grid container spacing={3}>
             <Grid item xs={12} lg={12}>

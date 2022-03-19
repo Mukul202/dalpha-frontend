@@ -5,9 +5,9 @@ import MetricsComponent from '../../components/metrics/MetricsComponent'
 export default function Company_Metrics(props) {
   const router = useRouter();
   const q_cpid = router.query.cpid;
-  const { cpid, cpname, attributesData } = props;
+  const { cpid, cpname, attributesData ,link} = props;
   return (
-    <Dashboard cpid={cpid} cpname={cpname} activeMenu={"company_metrics"}>
+    <Dashboard cpid={cpid} cpname={cpname} activeMenu={"company_metrics"} link={link}>
       <MetricsComponent cpid={cpid} cpname={cpname} attributesData={attributesData} />
     </Dashboard>
   );
@@ -26,12 +26,14 @@ export async function getServerSideProps(context) {
     const data = await response.json();
     attributesData[attrib] = data;
   }
+  let dataurl = await fetch(`https://dalpha-server-ism.herokuapp.com/api/v1/download.csv?id=${cpid}`);
 
   return {
     props: {
       cpid: cpid,
       cpname: cpname,
       attributesData: attributesData,
+      link: dataurl.url
     }
   };
 }

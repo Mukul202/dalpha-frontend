@@ -48,12 +48,12 @@ export function MainListItems(props) {
             <ListItemText primary="Finances" />
             </ListItemButton></Link>
 
-            <Link href={`/${cpid}/company_accounts?cpname=${cpname}`}>
-            <ListItemButton style={activeMenu == "company_accounts" ? activeStyle : {}}>
+            <Link href={`/${cpid}/company_announcement?cpname=${cpname}`}>
+            <ListItemButton style={activeMenu == "company_announcements" ? activeStyle : {}}>
             <ListItemIcon>
                 <BarChartIcon />
             </ListItemIcon>
-            <ListItemText primary="Accounts" />
+            <ListItemText primary="Announcements" />
             </ListItemButton></Link>
         </React.Fragment>
     );

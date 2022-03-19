@@ -89,7 +89,6 @@ function DashboardContent(props) {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-
   const { cpid, cpname, activeMenu, content, link } = props;
   return (
     <ThemeProvider theme={mdTheme}>
