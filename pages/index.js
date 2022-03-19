@@ -1,5 +1,5 @@
 import styles from "../styles/Home.module.css";
-import MiniCard from "../components/miniCard";
+import MiniCard from "../components/MiniCard";
 import SearchInput from "../components/Search";
 
 export default function Home() {
