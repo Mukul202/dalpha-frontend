@@ -23,7 +23,7 @@ export async function getServerSideProps(context) {
   let cpid = params.cpid;
   let cpname = query.cpname;
   console.log(cpid, cpname);
-  let data = await fetch(`https://dalpha-server-ism.herokuapp.com/api/v1/download.csv?id=${cpid}`);
+  let data = await fetch(`https://dalpha-server-inter-iit.herokuapp.com/api/v1/download.csv?id=${cpid}`);
   let infoData = {};
 
   return {
