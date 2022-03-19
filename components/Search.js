@@ -20,7 +20,7 @@ export default function SearchInput() {
             // </Link>
 
             // const res = await fetch('https://dalpha-server.herokuapp.com/api/v1/liabilities?id=1084048');
-            const res = await fetch(`http://dalpha-server-ism.herokuapp.com/api/v1/search?name=${theInput.current.value.trim().toUpperCase()}`);
+            const res = await fetch(`https://dalpha-server-ism.herokuapp.com/api/v1/search?name=${theInput.current.value.trim().toUpperCase()}`);
             const data = await res.json();
             console.log(data);
             theInput.current.value = "";
