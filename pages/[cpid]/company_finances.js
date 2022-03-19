@@ -19,8 +19,8 @@ export async function getServerSideProps(context) {
   let cpname = query.cpname;
   console.log(cpid, cpname);
   let financeData = {};
-  const response = await fetch(`https://dalpha-server-ism.herokuapp.com/api/v1/financials?id=${cpid}`);
-  let dataurl = await fetch(`https://dalpha-server-ism.herokuapp.com/api/v1/download.csv?id=${cpid}`);
+  const response = await fetch(`https://dalpha-server-inter-iit.herokuapp.com/api/v1/financials?id=${cpid}`);
+  let dataurl = await fetch(`https://dalpha-server-inter-iit.herokuapp.com/api/v1/download.csv?id=${cpid}`);
   const data = await response.json();
   return {
     props: {
